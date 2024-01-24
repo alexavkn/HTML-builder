@@ -10,19 +10,11 @@ async function readFile() {
 
         const stream = fs.createReadStream(filePath, { highWaterMark: 128 });
 
-        stream.on('readable', function () {
-          let data = stream.read();
-          if (data != null) console.log(data.toString());
-        });
-      
-        stream.on('end', function () {
-          //console.log("THE END");
-        });
-    })
-    .catch((error) => {
-        //console.log(error);
-        console.log('File not exist.');
-    });
-}
+stream.on('readable', function () {
+  let data = stream.read();
+  if (data != null) console.log(data.toString());
+});
 
-readFile()
+stream.on('end', function () {
+  console.log("THE END");
+});
